@@ -73,14 +73,17 @@ namespace :deploy do
   desc 'Restart application'
     task :restart do
       on roles(:app), in: :sequence, wait: 5 do
-        invoke 'puma:restart'
+        puts "Overwriting puma:restart to ensure that puma is running. Effectively, we are just starting Puma."
+        puts "A solution to this should be found."
+        invoke 'puma:stop'
+        invoke 'puma:start'
       end
   end
 
   before :starting,     :check_revision
-  after  :finishing,    :compile_assets
+  # after  :finishing,    :compile_assets
   after  :finishing,    :cleanup
-  # after  :finishing,    :restart
+  after  :finishing,    :restart
 end
 
 # ps aux | grep puma    # Get puma pid
