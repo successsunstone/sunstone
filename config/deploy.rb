@@ -1,15 +1,12 @@
-# Change these
 server '54.87.243.134', port: 22, roles: [:web, :app, :db], primary: true
 
 set :repo_url,        'git@github.com:successsunstone/sunstone.git'
 set :application,     'sunstone'
 
-# If using Digital Ocean's Ruby on Rails Marketplace framework, your username is 'rails'
 set :user,            'ubuntu'
 set :puma_threads,    [4, 16]
 set :puma_workers,    0
 
-# Don't change these unless you know what you're doing
 set :pty,             true
 set :use_sudo,        false
 set :stage,           :production
@@ -34,7 +31,7 @@ set :puma_init_active_record, true  # Change to false when not using ActiveRecor
 
 ## Linked Files & Directories (Default None):
 set :linked_files, %w{config/database.yml}
-# set :linked_dirs,  %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+set :linked_dirs,  %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
 namespace :puma do
   desc 'Create Directories for Puma Pids and Socket'
@@ -65,7 +62,7 @@ namespace :deploy do
   desc 'Initial Deploy'
   task :initial do
     on roles(:app) do
-      before 'deploy:restart', 'puma:start'
+      # before 'deploy:restart', 'puma:start'
       invoke 'deploy'
     end
   end
@@ -73,10 +70,7 @@ namespace :deploy do
   desc 'Restart application'
     task :restart do
       on roles(:app), in: :sequence, wait: 5 do
-        puts "Overwriting puma:restart to ensure that puma is running. Effectively, we are just starting Puma."
-        puts "A solution to this should be found."
-        invoke 'puma:stop'
-        invoke 'puma:start'
+        invoke!("puma:restart")
       end
   end
 
