@@ -17,7 +17,7 @@ install_plugin Capistrano::Puma
 # Documentation: https://github.com/seuros/capistrano-puma
 # From the documentation: "If you using puma daemonized (not supported in Puma 5+)""
 # install_plugin Capistrano::Puma::Daemon
-install_plugin Capistrano::Puma::Systemd
+# install_plugin Capistrano::Puma::Systemd
 
 # Loads custom tasks from `lib/capistrano/tasks' if you have any defined.
 Dir.glob('lib/capistrano/tasks/*.rake').each { |r| import r }
