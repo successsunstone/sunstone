@@ -1,7 +1,10 @@
+# Change these
 server '54.87.243.134', port: 22, roles: [:web, :app, :db], primary: true
 
 set :repo_url,        'git@github.com:successsunstone/sunstone.git'
 set :application,     'sunstone'
+
+# If using Digital Ocean's Ruby on Rails Marketplace framework, your username is 'rails'
 set :user,            'ubuntu'
 set :puma_threads,    [4, 16]
 set :puma_workers,    0
@@ -22,9 +25,9 @@ set :puma_preload_app, true
 set :puma_worker_timeout, nil
 set :puma_init_active_record, true  # Change to false when not using ActiveRecord
 
-# Defaults:
+## Defaults:
 # set :scm,           :git
-set :branch,          :master
+# set :branch,        :main
 # set :format,        :pretty
 # set :log_level,     :debug
 # set :keep_releases, 5
@@ -77,7 +80,7 @@ namespace :deploy do
   before :starting,     :check_revision
   after  :finishing,    :compile_assets
   after  :finishing,    :cleanup
-  after  :finishing,    :restart
+  # after  :finishing,    :restart
 end
 
 # ps aux | grep puma    # Get puma pid
