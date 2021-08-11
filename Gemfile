@@ -44,7 +44,7 @@ end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'puma'
+gem 'puma', '4.3.8'
 
 group :development do
   gem 'capistrano',         require: false
