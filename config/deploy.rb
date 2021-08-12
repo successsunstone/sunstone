@@ -45,6 +45,21 @@ namespace :puma do
   before 'deploy:starting', 'puma:make_dirs'
 end
 
+namespace :rails do
+  desc "Run the console on a remote server."
+  task :console do
+    on roles(:app) do |h|
+      execute_interactively "RAILS_ENV=production bundle exec rails console", "ubuntu"
+    end
+  end
+
+  def execute_interactively(command, user)
+    info "Connecting with #{user}@#{host}"
+    cmd = "ssh #{user}@#{host} -p 22 -t 'cd #{fetch(:deploy_to)}/current && #{command}'"
+    exec cmd
+  end
+end
+
 namespace :deploy do
   desc "Make sure local git is in sync with remote."
   task :check_revision do
