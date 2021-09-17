@@ -1,6 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { FiGithub, FiLinkedin } from 'react-icons/fi';
 import UserDropDown from './UserDropDown';
 import styles from './HaveUserNav.module.css';
 import CreateDropDownContainer from './create_drop_down_container';
@@ -53,18 +51,8 @@ class HaveUserNav extends React.Component {
     const { dropDown } = this.state;
     return (
       <>
-        <a href="https://github.com/breakfasting" target="_blank" rel="noopener noreferrer">
-          <button type="button" className="btn-icon">
-            <FiGithub />
-          </button>
-        </a>
-        <a href="https://www.linkedin.com/in/waynesu-an/" target="_blank" rel="noopener noreferrer">
-          <button type="button" className="btn-icon">
-            <FiLinkedin />
-          </button>
-        </a>
         <div className={styles.containerRef} ref={this.setCreateWrapperRef}>
-          <button type="button" onClick={() => this.toggleDropdown('design')} className="btn-blue ml-8">
+          <button type="button" onClick={() => this.toggleDropdown('design')} className="btn-red ml-8">
             <span className={styles.btnSpan}>Create a design</span>
           </button>
           {dropDown === 'design' ? <CreateDropDownContainer /> : ''}

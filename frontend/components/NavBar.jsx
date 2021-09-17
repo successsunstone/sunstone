@@ -10,7 +10,7 @@ const NavBar = ({ mode }) => (
     <div className={styles.navBar}>
       <Link to="/">
         <div className={styles.logo}>
-          <img src={window.logo} alt="logo" />
+          {/* <img src={window.logo} alt="logo" /> */}
         </div>
       </Link>
       <ul className={styles.nav}>

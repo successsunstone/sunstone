@@ -6,6 +6,7 @@ $light-grey: #dcdcdc;
 $lighter-grey: #eeeeee;
 $white: #ffffff;
 
+$red: #ff0000;
 $blue: #dc85ff;
 $light-blue: #ffd22e;
 
@@ -64,6 +65,12 @@ button:active {
 
 .btn-blue {
   background-color: $blue;
+  border-color: transparent;
+  color: $white;
+}
+
+.btn-red {
+  background-color: $red;
   border-color: transparent;
   color: $white;
 }
