@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FiUserCheck, FiChevronsLeft } from "react-icons/fi";
-import { googleIcon } from './AuthIcons';
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -56,12 +55,7 @@ class LoginForm extends React.Component {
           </Link>
           <h2>Log in to your account</h2>
         </div>
-        <button type="button" className="google btn-outline" disabled>
-          {googleIcon}
-          <span>Log in with Google</span>
-        </button>
         <button type="button" onClick={this.demoLogin} className="demo btn-outline">
-          {/* {facebookIcon} */}
           <i>
             <FiUserCheck />
           </i>

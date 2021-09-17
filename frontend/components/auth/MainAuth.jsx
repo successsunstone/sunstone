@@ -11,9 +11,9 @@ const MainAuth = () => (
       <AuthRoute path="/login" component={LoginAuthFormContainer} />
       <AuthRoute path="/" component={SignupAuthFormContainer} />
     </Switch>
-    <div className={styles.splash}>
+    {/* <div className={styles.splash}>
       <img src={window.splash} alt="" />
-    </div>
+    </div> */}
   </div>
 );
 
