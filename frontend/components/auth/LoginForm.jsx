@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FiUserCheck, FiChevronsLeft } from "react-icons/fi";
+import { FiUserCheck, FiChevronsLeft } from 'react-icons/fi';
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -45,7 +45,7 @@ class LoginForm extends React.Component {
   }
 
   render() {
-    const { errors } = this.props;
+    // const { errors } = this.props;
     const { animate } = this.state;
     return (
       <form className={animate ? 'animated auth-form' : 'auth-form'} onSubmit={this.handleSubmit}>
@@ -61,7 +61,7 @@ class LoginForm extends React.Component {
           </i>
           <span>Log in as Demo User</span>
         </button>
-        <div className="divider">
+        {/* <div className="divider">
           <hr />
           <span>OR</span>
           <hr />
@@ -73,9 +73,9 @@ class LoginForm extends React.Component {
           Log in
         </button>
         <small>
-          New to Gwaphics?&nbsp;
+          New to Design Tool?&nbsp;
           <Link to="/signup">Sign up</Link>
-        </small>
+        </small> */}
       </form>
     );
   }

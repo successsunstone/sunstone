@@ -36,9 +36,9 @@ const ImageShow = ({ image, user, external }) => {
               <p>
                 Photo by
                 {' '}
-                <a className={styles.name} href={`${image.creator_link}?utm_source=Gwaphics&utm_medium=referral`}>{image.creator}</a>
+                <a className={styles.name} href={`${image.creator_link}`}>{image.creator}</a>
                 {' on '}
-                <a className={styles.name} href="https://unsplash.com/?utm_source=Gwaphics&utm_medium=referral">Unsplash</a>
+                <a className={styles.name} href="https://unsplash.com/">Unsplash</a>
               </p>
             ) : (
               <p>

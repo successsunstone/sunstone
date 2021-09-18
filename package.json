@@ -1,5 +1,5 @@
 {
-  "name": "Gwaphics",
+  "name": "designtool",
   "private": true,
   "dependencies": {
     "moveable": "^0.17.10",

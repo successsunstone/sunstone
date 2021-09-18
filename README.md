@@ -1,8 +1,8 @@
-# Gwaphics
+# Design Tool
 
-[Gwaphics Live Demo](https://gwaphics.herokuapp.com/)
+[Design Tool Live Demo](https://designtool.herokuapp.com/)
 
-Gwaphics, a [Canva](https://www.canva.com/) clone, is a online graphical design tool for creating designs effortlessly. Aside from creating shapes, text, and image elements on a blank canvas using intuitive drag & drop features, Users also have a variety of inspiring public design templates to choose from.
+Design Tool, a [Canva](https://www.canva.com/) clone, is a online graphical design tool for creating designs effortlessly. Aside from creating shapes, text, and image elements on a blank canvas using intuitive drag & drop features, Users also have a variety of inspiring public design templates to choose from.
 
 ![Editor Screenshot](https://i.imgur.com/FuQnPEs.png)
 
@@ -20,7 +20,7 @@ Gwaphics, a [Canva](https://www.canva.com/) clone, is a online graphical design 
 Greeted by a splash page, users may sign-in or sign-up as a new member (using [BCrypt](https://rubygems.org/gems/bcrypt/) for password hashing), also with the choice of logging in as a demo user.
 
 ### Designs
-Designs are the main feature of the Gwaphics project. Aside from storing meta-data about the design itself, a design most importantly holds references to all the elements associated with it. While these kinds of one-to-many associations are usually handled with NoSQL databases with embedded sub-documents, Gwaphics utilizes rails' nested attributes and polymorphic associations to ensure a Relational database such as PostgreSQL could also achieve minimal backend API calls.
+Designs are the main feature of the Design Tool project. Aside from storing meta-data about the design itself, a design most importantly holds references to all the elements associated with it. While these kinds of one-to-many associations are usually handled with NoSQL databases with embedded sub-documents, Design Tool utilizes rails' nested attributes and polymorphic associations to ensure a Relational database such as PostgreSQL could also achieve minimal backend API calls.
 
 ```ruby
 class Design < ApplicationRecord
@@ -28,7 +28,7 @@ class Design < ApplicationRecord
 end
 ```
 
-According to our [schema](https://github.com/breakfasting/Gwaphics/wiki/Schema), a `design` has_many `elements` which either has_many `shapes`, `text`, `images` or `stockphotos`, the tricky part for polymorphic associations to accept nested attributes, is to override the `accepts_nested_attributes_for` build method to take in `elementable_type` and find a declared constant with the specified name.
+According to our [schema](https://github.com/breakfasting/Design Tool/wiki/Schema), a `design` has_many `elements` which either has_many `shapes`, `text`, `images` or `stockphotos`, the tricky part for polymorphic associations to accept nested attributes, is to override the `accepts_nested_attributes_for` build method to take in `elementable_type` and find a declared constant with the specified name.
 
 ```ruby
 class Element < ApplicationRecord
@@ -40,7 +40,7 @@ class Element < ApplicationRecord
 end
 ```
 
-Thus, our `designs_controller` only takes in one single `design` payload to populate/modify all corresponding tables. With the frontend state handling the temporary attributes of creating/editing a design, Gwaphics minimizes the API calls for either create, update, and delete actions with one single API call on user save.
+Thus, our `designs_controller` only takes in one single `design` payload to populate/modify all corresponding tables. With the frontend state handling the temporary attributes of creating/editing a design, Design Tool minimizes the API calls for either create, update, and delete actions with one single API call on user save.
 
 ![Drag and Drop demo](https://i.imgur.com/dUWZlW2.gif)
 
@@ -81,11 +81,11 @@ elements.map((element, index) => {
 
 ![Thumbnails of designs](https://i.imgur.com/q2ZpnpI.png)
 
-Thumbnails are generated to ensure the efficiency of loading multiple designs on a page. Gwaphics runs "Puppeteer" as an external ExpressJS API, a headless chromium browser that navigates to the sharable link of each design on user save, which then captures the page with the given width and height. The screenshot response is sent back as a base64 string, processed to be a JavaScript File type, and then uploaded to AWS S3 via Active Storage.
+Thumbnails are generated to ensure the efficiency of loading multiple designs on a page. Design Tool runs "Puppeteer" as an external ExpressJS API, a headless chromium browser that navigates to the sharable link of each design on user save, which then captures the page with the given width and height. The screenshot response is sent back as a base64 string, processed to be a JavaScript File type, and then uploaded to AWS S3 via Active Storage.
 
 ```javascript
 export const createThumbnail = ({ id, width, height }) => (
-  fetch(`https://gwaphics-pup.herokuapp.com/screenshot?id=${id}&width=${width}&height=${height}`)
+  fetch(`https://designtool-pup.herokuapp.com/screenshot?id=${id}&width=${width}&height=${height}`)
     .then((res) => res.blob())
     .then((blob) => {
       const file = new File([blob], 'File name', { type: 'image/png' });
