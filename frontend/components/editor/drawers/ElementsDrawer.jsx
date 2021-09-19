@@ -7,7 +7,6 @@ export default function (props) {
   const [bundle, setBundle] = useState(window.bundles[0]);
 
   const internalAddElement = (shape) => {
-    console.log(shape);
     const { addElement } = props;
     const element = {
       elementableType: 'Shape',
