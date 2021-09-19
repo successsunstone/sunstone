@@ -66,14 +66,14 @@ class TextDrawer extends React.Component {
                 <p>Add a little bit of body text</p>
               </div>
             </div>
-            <h3>Font Combinations</h3>
+            {/* <h3>Font Combinations</h3>
             <div className={styles.itemList}>
               {mockupResponse.map((item) => (
                 <div key={item.id} className={styles.item} onClick={() => this.addElement(item)}>
                   {item.text}
                 </div>
               ))}
-            </div>
+            </div> */}
           </div>
         </div>
       </>

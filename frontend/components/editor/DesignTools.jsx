@@ -102,18 +102,22 @@ class DesignTools extends React.Component {
                 <input type="text" className="input-attr" size={selected.elementableAttributes.height.toString().length + 1} value={selected.elementableAttributes.height} onChange={this.changeValue('height')} />
               </>
             ) : ''} */}
-            {selected.elementableType === 'Text' ? (
+            {selected.elementableType === 'Text' && (
               <>
                 <span>Text:</span>
                 <input type="text" className="input-attr" size={selected.elementableAttributes.text.length + 1} value={selected.elementableAttributes.text} onChange={this.changeValue('text')} />
                 <span>Size:</span>
                 <input type="text" className="input-attr" size={selected.elementableAttributes.fontSize.toString().length + 1} value={selected.elementableAttributes.fontSize} onChange={this.changeValue('fontSize')} />
                 <span>Font:</span>
-                <input type="text" className="input-attr" size={selected.elementableAttributes.fontFamily.toString().length + 1} value={selected.elementableAttributes.fontFamily} onChange={this.changeValue('fontFamily')} />
+                <select className="input-attr" defaultValue={selected.elementableAttributes.fontFamily} onChange={this.changeValue('fontFamily')}>
+                  {['Open Sans', 'ArchitectsDaughter', 'LobsterTwo', 'AbrilFatface', 'AmaticSC', 'Italianno', 'Parisienne', 'FredokaOne', 'Nunito', 'Raleway', 'Roboto', 'Sarabun', 'Teko', 'Work Sans', 'NanumMyeongjo', 'Chakra Petch', 'Qahiri-Regular', 'Fuggles-Regular', 'ZenTokyoZoo-Regular'].map(font => (
+                    <option key={font}>{font}</option>
+                  ))}
+                </select>
                 <span>Weight:</span>
                 <input id="attr-weight" type="text" className="input-attr" size={selected.elementableAttributes.fontWeight.toString().length + 1} value={selected.elementableAttributes.fontWeight} onChange={this.changeValue('fontWeight')} />
               </>
-            ) : ''}
+            )}
           </div>
           <div className={styles.rightNav}>
             {/* <span>X:</span>
