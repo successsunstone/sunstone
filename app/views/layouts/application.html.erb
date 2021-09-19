@@ -16,16 +16,228 @@
     <script type="text/javascript">
       // window.splash = "<%= image_url('designtool-splash.svg') %>";
       // window.logo = "<%= image_url('designtool-logo.svg') %>";
-      window.circle = "<%= image_url('shapes/circle.svg#svg') %>";
-      window.rectangle = "<%= image_url('shapes/rectangle.svg#svg') %>";
-      window.triangle = "<%= image_url('shapes/triangle.svg#svg') %>";
-      window.hexagon = "<%= image_url('shapes/hexagon.svg#svg') %>";
-      window.pentagon = "<%= image_url('shapes/pentagon.svg#svg') %>";
-      window.roundedSquare = "<%= image_url('shapes/rounded-square.svg#svg') %>";
-      window.heart = "<%= image_url('shapes/heart.svg#svg') %>";
-      window.star = "<%= image_url('shapes/star.svg#svg') %>";
-      window.rightTriangle = "<%= image_url('shapes/right-triangle.svg#svg') %>";
-      window.transparent = "<%= image_url('transparent.png') %>"
+      // window.circle = "<%= image_url('shapes/circle.svg#svg') %>";
+      // window.rectangle = "<%= image_url('shapes/rectangle.svg#svg') %>";
+      // window.triangle = "<%= image_url('shapes/triangle.svg#svg') %>";
+      // window.hexagon = "<%= image_url('shapes/hexagon.svg#svg') %>";
+      // window.pentagon = "<%= image_url('shapes/pentagon.svg#svg') %>";
+      // window.roundedSquare = "<%= image_url('shapes/rounded-square.svg#svg') %>";
+      // window.heart = "<%= image_url('shapes/heart.svg#svg') %>";
+      // window.star = "<%= image_url('shapes/star.svg#svg') %>";
+      // window.rightTriangle = "<%= image_url('shapes/right-triangle.svg#svg') %>";
+      // window.transparent = "<%= image_url('transparent.png') %>"
+
+      shapes = [
+        {name: 'SHAPE5sided', url: "<%= image_url('elements/shapes/5 sided.svg#Layer_1') %>"},
+        {name: 'SHAPECircle', url: "<%= image_url('elements/shapes/Circle.svg#Layer_1') %>"},
+        {name: 'SHAPEhexagon', url: "<%= image_url('elements/shapes/hexagon.svg#Layer_1') %>"},
+        {name: 'SHAPEsquare', url: "<%= image_url('elements/shapes/square.svg#Layer_1') %>"},
+        {name: 'SHAPEtriangle', url: "<%= image_url('elements/shapes/triangle.svg#Layer_1') %>"},
+        {name: 'SHAPE7sided', url: "<%= image_url('elements/shapes/7 sided.svg#Layer_1') %>"},
+        {name: 'SHAPEelipse', url: "<%= image_url('elements/shapes/elipse.svg#Layer_1') %>"},
+        {name: 'SHAPErhombus', url: "<%= image_url('elements/shapes/rhombus.svg#Layer_1') %>"},
+        {name: 'SHAPEstar', url: "<%= image_url('elements/shapes/star.svg#Layer_1') %>"},
+      ]
+
+      summerbundle = [
+        {name: 'SB0011SC', url: "<%= image_url('elements/summerbundle/0011SC Be a pineapple.svg#Layer_1') %>"},
+        {name: 'SBIce', url: "<%= image_url('elements/summerbundle/Ice cream cone 2.svg#Layer_1') %>"},
+        {name: 'SB0012SC', url: "<%= image_url('elements/summerbundle/0012SC Life in flip flops.svg#Layer_1') %>"},
+        // {name: 'SBLemonh2', url: "<%= image_url('elements/summerbundle/Lemon half 2.svg#Layer_1') %>"},
+        {name: 'SB0014SC', url: "<%= image_url('elements/summerbundle/0014SC Aloha.svg#Layer_1') %>"},
+        // {name: 'SBLemonh', url: "<%= image_url('elements/summerbundle/Lemon half.svg#Layer_1') %>"},
+        {name: 'SB0015SC', url: "<%= image_url('elements/summerbundle/0015SC Beach Vibe.svg#Layer_1') %>"},
+        {name: 'SBLemonm', url: "<%= image_url('elements/summerbundle/Lemon monogram frame.svg#Layer_1') %>"},
+        {name: 'SB0017SC', url: "<%= image_url('elements/summerbundle/0017SC Shady Beach.svg#Layer_1') %>"},
+        // {name: 'SBLemon', url: "<%= image_url('elements/summerbundle/Lemon.svg#Layer_1') %>"},
+        {name: 'SB0019SC', url: "<%= image_url('elements/summerbundle/0019SC Only BS I Need.svg#Layer_1') %>"},
+        {name: 'SBLemonwm', url: "<%= image_url('elements/summerbundle/Lemon wedge monogram frame.svg#Layer_1') %>"},
+        {name: 'SB0020SC', url: "<%= image_url('elements/summerbundle/0020SC She is a wildflower.svg#Layer_1') %>"},
+        // {name: 'SBLemonw', url: "<%= image_url('elements/summerbundle/Lemon Wedge.svg#Layer_1') %>"},
+        {name: 'SB0021SC', url: "<%= image_url('elements/summerbundle/0021SC Suns out guns out.svg#Layer_1') %>"},
+        {name: 'SBMonogram', url: "<%= image_url('elements/summerbundle/Monogram frame.svg#Layer_1') %>"},
+        {name: 'SB004SC', url: "<%= image_url('elements/summerbundle/004SC Hello Summer.svg#Layer_1') %>"},
+        {name: 'SBPopsicles', url: "<%= image_url('elements/summerbundle/Popsicles.svg#Layer_1') %>"},
+        {name: 'SB006SC', url: "<%= image_url('elements/summerbundle/006SC Summer Vibes Only.svg#Layer_1') %>"},
+        {name: 'SBSplit', url: "<%= image_url('elements/summerbundle/Split Strawberry.svg#Layer_1') %>"},
+        {name: 'SB007SC', url: "<%= image_url('elements/summerbundle/007SC Sunshine and tan lines.svg#Layer_1') %>"},
+        {name: 'SBStrawberry', url: "<%= image_url('elements/summerbundle/Strawberry.svg#Layer_1') %>"},
+        {name: 'SB008SC', url: "<%= image_url('elements/summerbundle/008SC Tropical sunset.svg#Layer_1') %>"},
+        {name: 'SBSummerstate', url: "<%= image_url('elements/summerbundle/Summer state of mind.svg#Layer_1') %>"},
+        {name: 'SBBeach', url: "<%= image_url('elements/summerbundle/Beach Please.svg#Layer_1') %>"},
+        {name: 'SBSummerSubway', url: "<%= image_url('elements/summerbundle/Summer Subway each color combined.svg#Layer_1') %>"},
+        {name: 'SBFlamingo', url: "<%= image_url('elements/summerbundle/Flamingo one color.svg#Layer_1') %>"},
+        // {name: 'SBSummer', url: "<%= image_url('elements/summerbundle/Summer Subway in pieces.svg#Layer_1') %>"},
+        // {name: 'SBFlamingo3', url: "<%= image_url('elements/summerbundle/Flamingo three color.svg#Layer_1') %>"},
+        {name: 'SBWatermelons', url: "<%= image_url('elements/summerbundle/Watermelons.svg#Layer_1') %>"},
+        {name: 'SBIcecream', url: "<%= image_url('elements/summerbundle/Ice cream cone 1.svg#Layer_1') %>"},
+      ]
+
+      momlifebundle = [
+        {name: 'MLB0010SC', url: "<%= image_url('elements/Mom Life Bundle/0010SC BestMomEver.svg#Layer_1') %>"},
+        {name: 'MLB0015SC', url: "<%= image_url('elements/Mom Life Bundle/0015SC WorldsBestMom.svg#Layer_1') %>"},
+        {name: 'MLB001SC', url: "<%= image_url('elements/Mom Life Bundle/001SC My greatest blessings call me mom.svg#Layer_1') %>"},
+        {name: 'MLB005SC', url: "<%= image_url('elements/Mom Life Bundle/005SC LivinThatMomLife.svg#Layer_1') %>"},
+        {name: 'MLB0011SC', url: "<%= image_url('elements/Mom Life Bundle/0011SC Strong as a mother.svg#Layer_1') %>"},
+        {name: 'MLB0016SC', url: "<%= image_url('elements/Mom Life Bundle/0016SC MyFavoritePeople.svg#Layer_1') %>"},
+        {name: 'MLB0020SC', url: "<%= image_url('elements/Mom Life Bundle/0020SC MomWifeBlessedLife.svg#Layer_1') %>"},
+        {name: 'MLB006SC', url: "<%= image_url('elements/Mom Life Bundle/006SC BlessedMama.svg#Layer_1') %>"},
+        {name: 'MLBMom1', url: "<%= image_url('elements/Mom Life Bundle/Mom1 Fuel one color.svg#Layer_1') %>"},
+        {name: 'MLB0012SC', url: "<%= image_url('elements/Mom Life Bundle/0012SC SuperMomSuperTired.svg#Layer_1') %>"},
+        {name: 'MLB0017SC', url: "<%= image_url('elements/Mom Life Bundle/0017SC Mom life is the best life.svg#Layer_1') %>"},
+        {name: 'MLB0021ImThatMom', url: "<%= image_url('elements/Mom Life Bundle/0021ImThatMom.svg#Layer_1') %>"},
+        {name: 'MLB007SC', url: "<%= image_url('elements/Mom Life Bundle/007SC Mom life is the best life.svg#Layer_1') %>"},
+        // {name: 'MLBMom2', url: "<%= image_url('elements/Mom Life Bundle/Mom2 Fuel two color.svg#Layer_1') %>"},
+        {name: 'MLB0013SC', url: "<%= image_url('elements/Mom Life Bundle/0013SC SuperMomSuperTired.svg#Layer_1') %>"},
+        {name: 'MLB0018SC', url: "<%= image_url('elements/Mom Life Bundle/0018SC ThouShaltNotTryMe.svg#Layer_1') %>"},
+        {name: 'MLB003SC', url: "<%= image_url('elements/Mom Life Bundle/003SC Chaos Coordinator.svg#Layer_1') %>"},
+        {name: 'MLB008SC', url: "<%= image_url('elements/Mom Life Bundle/008SC WifeMomBoss.svg#Layer_1') %>"},
+        {name: 'MLB0014SC', url: "<%= image_url('elements/Mom Life Bundle/0014SC FullHandsFullHeart.svg#Layer_1') %>"},
+        {name: 'MLB0019SC', url: "<%= image_url('elements/Mom Life Bundle/0019SC MySquadCallsMeMama.svg#Layer_1') %>"},
+        {name: 'MLB004SC', url: "<%= image_url('elements/Mom Life Bundle/004SC Eat Sleep Mom Repeat.svg#Layer_1') %>"},
+        {name: 'MLB009SC', url: "<%= image_url('elements/Mom Life Bundle/009SC MessyBunGettingStuffDone.svg#Layer_1') %>"},
+      ]
+
+      lovedogsbundle = [
+        { name: 'LDB001', url: "<%= image_url('elements/LoveDogsBundle/001 JustWantToPetDogs.svg#Layer_1') %>"},
+        { name: 'LDB002', url: "<%= image_url('elements/LoveDogsBundle/002 LifeGoalPetDogs.svg#Layer_1') %>"},
+        { name: 'LDB003', url: "<%= image_url('elements/LoveDogsBundle/003 CantBringDog.svg#Layer_1') %>"},
+        { name: 'LDB004', url: "<%= image_url('elements/LoveDogsBundle/004 LifeBetterDogs.svg#Layer_1') %>"},
+        { name: 'LDB004', url: "<%= image_url('elements/LoveDogsBundle/004 LifeBetterDog.svg#Layer_1') %>"},
+        { name: 'LDB005', url: "<%= image_url('elements/LoveDogsBundle/005 DrinkCoffeePetDogs.svg#Layer_1') %>"},
+        { name: 'LDB005', url: "<%= image_url('elements/LoveDogsBundle/005 DrinkCoffeePetDog.svg#Layer_1') %>"},
+        { name: 'LDB006', url: "<%= image_url('elements/LoveDogsBundle/006 DogsFavoritePeople.svg#Layer_1') %>"},
+        { name: 'LDB007', url: "<%= image_url('elements/LoveDogsBundle/007 WorkHardDogs.svg#Layer_1') %>"},
+        { name: 'LDB007', url: "<%= image_url('elements/LoveDogsBundle/007 WorkHardDog.svg#Layer_1') %>"},
+        { name: 'LDB008', url: "<%= image_url('elements/LoveDogsBundle/008 EasilyDistracted.svg#Layer_1') %>"},
+        { name: 'LDB009', url: "<%= image_url('elements/LoveDogsBundle/009 LessPeopleMoreDogs.svg#Layer_1') %>"},
+        { name: 'LDB0010', url: "<%= image_url('elements/LoveDogsBundle/0010 DogThinksCool.svg#Layer_1') %>"},
+        { name: 'LDB0011', url: "<%= image_url('elements/LoveDogsBundle/0011 StayHomeDogMom.svg#Layer_1') %>"},
+        { name: 'LDB0012', url: "<%= image_url('elements/LoveDogsBundle/0012 OutfitComplete.svg#Layer_1') %>"},
+        { name: 'LDB0013', url: "<%= image_url('elements/LoveDogsBundle/0013 DogBigDeal.svg#Layer_1') %>"},
+        { name: 'LDB0014', url: "<%= image_url('elements/LoveDogsBundle/0014 BestLifeRescue.svg#Layer_1') %>"},
+        { name: 'LDB0015', url: "<%= image_url('elements/LoveDogsBundle/0015 DogObsessed.svg#Layer_1') %>"},
+        { name: 'LDB0016', url: "<%= image_url('elements/LoveDogsBundle/0016 GirlLovesdogs.svg#Layer_1') %>"},
+        { name: 'LDB0017', url: "<%= image_url('elements/LoveDogsBundle/0017 PlansWithDog.svg#Layer_1') %>"},
+        { name: 'LDB0018', url: "<%= image_url('elements/LoveDogsBundle/0018 PetThisDog distressed.svg#Layer_1') %>"},
+        { name: 'LDB0018', url: "<%= image_url('elements/LoveDogsBundle/0018 PetThisDog smooth.svg#Layer_1') %>"},
+        { name: 'LDB0019', url: "<%= image_url('elements/LoveDogsBundle/0019 DrinkingAloneDog.svg#Layer_1') %>"},
+        { name: 'LDB0020', url: "<%= image_url('elements/LoveDogsBundle/0020 TalkingToDog Smooth.svg#Layer_1') %>"},
+      ]
+
+      christianbundle = [
+        { name: 'JESUS001', url: "<%= image_url('elements/Christian Bundle/001 Blessed by God.svg#Layer_1') %>"},
+        { name: 'JESUS002', url: "<%= image_url('elements/Christian Bundle/002 Flawed Still Worthy.svg#Layer_1') %>"},
+        { name: 'JESUS003', url: "<%= image_url('elements/Christian Bundle/003 BeStrongCourageous.svg#Layer_1') %>"},
+        { name: 'JESUS004', url: "<%= image_url('elements/Christian Bundle/004 ChosenBlessed.svg#Layer_1') %>"},
+        { name: 'JESUS005', url: "<%= image_url('elements/Christian Bundle/005 Faith Makes It Possible.svg#Layer_1') %>"},
+        { name: 'JESUS006', url: "<%= image_url('elements/Christian Bundle/006 Grace Upon Grace.svg#Layer_1') %>"},
+        { name: 'JESUS007', url: "<%= image_url('elements/Christian Bundle/007 Made To Worship SMOOTH.svg#Layer_1') %>"},
+        { name: 'JESUS008', url: "<%= image_url('elements/Christian Bundle/008 MakeHeavenCrowded.svg#Layer_1') %>"},
+        { name: 'JESUS009', url: "<%= image_url('elements/Christian Bundle/009 TalkingToJesus.svg#Layer_1') %>"},
+        // { name: 'JESUS0010', url: "<%= image_url('elements/Christian Bundle/0010 PrayOnIt LAYERED LEOPARD PRINT FOR HEAT TRANSFER VINYL.svg#Layer_1') %>"},
+        // { name: 'JESUS0010', url: "<%= image_url('elements/Christian Bundle/0010 PrayOnIt.svg#Layer_1') %>"},
+        { name: 'JESUS0010', url: "<%= image_url('elements/Christian Bundle/0010 PrayOnIt USE WITH PATTERN VINYL.svg#Layer_1') %>"},
+        { name: 'JESUS0011', url: "<%= image_url('elements/Christian Bundle/0011 Saved By Grace.svg#Layer_1') %>"},
+        { name: 'JESUS0012', url: "<%= image_url('elements/Christian Bundle/0012 FallForJesus.svg#Layer_1') %>"},
+        { name: 'JESUS0013', url: "<%= image_url('elements/Christian Bundle/0013 Faith Forwarding All Issues.svg#Layer_1') %>"},
+        { name: 'JESUS0014', url: "<%= image_url('elements/Christian Bundle/0014 FearEndWhereFaithBegins.svg#Layer_1') %>"},
+        { name: 'JESUS0015', url: "<%= image_url('elements/Christian Bundle/0015 GraceChangesEverything.svg#Layer_1') %>"},
+        { name: 'JESUS0016', url: "<%= image_url('elements/Christian Bundle/0016 All Things Through Christ.svg#Layer_1') %>"},
+        { name: 'JESUS0017', url: "<%= image_url('elements/Christian Bundle/0017 LoveLikeJesus.svg#Layer_1') %>"},
+        { name: 'JESUS0018', url: "<%= image_url('elements/Christian Bundle/0018 WakePraySlay.svg#Layer_1') %>"},
+        { name: 'JESUS0019', url: "<%= image_url('elements/Christian Bundle/0019 Jesus In Her Heart.svg#Layer_1') %>"},
+        { name: 'JESUS0020', url: "<%= image_url('elements/Christian Bundle/0020 Where God Guides SMOOTH.svg#Layer_1') %>"},
+      ]
+
+      coffeesbundle = [
+        { name: 'COFFEE01', url: "<%= image_url('elements/Coffee Bundle/01 ButfirstCoffee.svg#Layer_1') %>"},
+        { name: 'COFFEE02', url: "<%= image_url('elements/Coffee Bundle/02 LifeHappensCoffeeHelps.svg#Layer_1') %>"},
+        // { name: 'COFFEE03', url: "<%= image_url('elements/Coffee Bundle/03 CaffeineQueen.svg#Layer_1') %>"},
+        { name: 'COFFEE04', url: "<%= image_url('elements/Coffee Bundle/04 Run on Coffee.svg#Layer_1') %>"},
+        { name: 'COFFEE05', url: "<%= image_url('elements/Coffee Bundle/05 CoffeeAndMoreCoffee.svg#Layer_1') %>"},
+        { name: 'COFFEE06', url: "<%= image_url('elements/Coffee Bundle/06 CoffeeAdultingHard.svg#Layer_1') %>"},
+        { name: 'COFFEE07', url: "<%= image_url('elements/Coffee Bundle/07 CoffeeAndHustle.svg#Layer_1') %>"},
+        { name: 'COFFEE08', url: "<%= image_url('elements/Coffee Bundle/08 Coffee Obsessed.svg#Layer_1') %>"},
+        { name: 'COFFEE09', url: "<%= image_url('elements/Coffee Bundle/09 First we drink the coffee.svg#Layer_1') %>"},
+        { name: 'COFFEE010', url: "<%= image_url('elements/Coffee Bundle/010 May your coffee.svg#Layer_1') %>"},
+        { name: 'COFFEE011', url: "<%= image_url('elements/Coffee Bundle/011 CoffeeGoodIdea.svg#Layer_1') %>"},
+        { name: 'COFFEE012', url: "<%= image_url('elements/Coffee Bundle/012 IRunOnCoffee.svg#Layer_1') %>"},
+        { name: 'COFFEE013', url: "<%= image_url('elements/Coffee Bundle/013 CoffeeBecausePunching.svg#Layer_1') %>"},
+        { name: 'COFFEE014', url: "<%= image_url('elements/Coffee Bundle/014 CoffeeAndJesus.svg#Layer_1') %>"},
+        { name: 'COFFEE015', url: "<%= image_url('elements/Coffee Bundle/015 SorryWhatISaid.svg#Layer_1') %>"},
+        { name: 'COFFEE016', url: "<%= image_url('elements/Coffee Bundle/016 LifeBeginsAfterCoffee.svg#Layer_1') %>"},
+        { name: 'COFFEE017', url: "<%= image_url('elements/Coffee Bundle/017 CoffeeWorkWine.svg#Layer_1') %>"},
+        { name: 'COFFEE018', url: "<%= image_url('elements/Coffee Bundle/018 AllThingsPossible.svg#Layer_1') %>"},
+        { name: 'COFFEE019', url: "<%= image_url('elements/Coffee Bundle/019 GirlLovesCoffee.svg#Layer_1') %>"},
+        { name: 'COFFEE020', url: "<%= image_url('elements/Coffee Bundle/020 CoffeeBecauseWine.svg#Layer_1') %>"},
+      ]
+
+      craftingbundle = [
+        { name: 'CB001', url: "<%= image_url('elements/Crafting Bundle/001 ICraftSoIDontKill.svg#Layer_1') %>"},
+        { name: 'CB003', url: "<%= image_url('elements/Crafting Bundle/003 CraftEmpire.svg#Layer_1') %>"},
+        { name: 'CB002', url: "<%= image_url('elements/Crafting Bundle/002 IdRatherBeCrafting.svg#Layer_1') %>"},
+        { name: 'CB004', url: "<%= image_url('elements/Crafting Bundle/004 StayHomeAndCraft.svg#Layer_1') %>"},
+        { name: 'CB005', url: "<%= image_url('elements/Crafting Bundle/005 CaffeineAndCrafting.svg#Layer_1') %>"},
+        { name: 'CB006', url: "<%= image_url('elements/Crafting Bundle/006 CraftersGonnaCraft.svg#Layer_1') %>"},
+        { name: 'CB007', url: "<%= image_url('elements/Crafting Bundle/007 BusyCraftingToday.svg#Layer_1') %>"},
+        { name: 'CB008', url: "<%= image_url('elements/Crafting Bundle/008 SoCraftySweatGlitter.svg#Layer_1') %>"},
+        { name: 'CB009', url: "<%= image_url('elements/Crafting Bundle/009 ICanTotallyMakeThat.svg#Layer_1') %>"},
+        { name: 'CB0010', url: "<%= image_url('elements/Crafting Bundle/0010 CraftaholicOnTheRoad.svg#Layer_1') %>"},
+        { name: 'CB0011', url: "<%= image_url('elements/Crafting Bundle/0011 MyCraftingShirt.svg#Layer_1') %>"},
+        { name: 'CB0012', url: "<%= image_url('elements/Crafting Bundle/0012 LifeBetterWhenCrafting.svg#Layer_1') %>"},
+      ]
+
+      gardeningbundle = [
+        { name: 'GARDEN001', url: "<%= image_url('elements/Gardening Bundle/001 I Dig Gardening.svg#Layer_1') %>"},
+        { name: 'GARDEN002', url: "<%= image_url('elements/Gardening Bundle/002 GardeningTherapy.svg#Layer_1') %>"},
+        { name: 'GARDEN003', url: "<%= image_url('elements/Gardening Bundle/003 EasilyDistractedByPlants.svg#Layer_1') %>"},
+        { name: 'GARDEN004', url: "<%= image_url('elements/Gardening Bundle/004 Plantaholic.svg#Layer_1') %>"},
+        { name: 'GARDEN005', url: "<%= image_url('elements/Gardening Bundle/005 RatherBeGardening.svg#Layer_1') %>"},
+        { name: 'GARDEN006', url: "<%= image_url('elements/Gardening Bundle/006 PlantsNeedMe.svg#Layer_1') %>"},
+        { name: 'GARDEN007', url: "<%= image_url('elements/Gardening Bundle/007 CrazyPlantLady.svg#Layer_1') %>"},
+        { name: 'GARDEN008', url: "<%= image_url('elements/Gardening Bundle/008 BornToGarden.svg#Layer_1') %>"},
+        { name: 'GARDEN009', url: "<%= image_url('elements/Gardening Bundle/009 EnoughPlants.svg#Layer_1') %>"},
+        { name: 'GARDEN0010', url: "<%= image_url('elements/Gardening Bundle/0010 IntrovertedDiscussPlants.svg#Layer_1') %>"},
+        { name: 'GARDEN0011', url: "<%= image_url('elements/Gardening Bundle/0011 PlantAddiction.svg#Layer_1') %>"},
+        { name: 'GARDEN00111', url: "<%= image_url('elements/Gardening Bundle/0011 PlantAddiction DISTRESSED.svg#Layer_1') %>"},
+        { name: 'GARDEN0012', url: "<%= image_url('elements/Gardening Bundle/0012 WetMyPlants.svg#Layer_1') %>"},
+      ]
+
+      window.bundles= [
+        {
+          label: 'Shapes',
+          bundle: shapes,
+        },
+        {
+          label: 'Summer',
+          bundle: summerbundle,
+        },
+        {
+          label: 'Mom Life',
+          bundle: momlifebundle,
+        },
+        {
+          label: 'Love Dogs',
+          bundle: lovedogsbundle,
+        },
+        {
+          label: 'Christian',
+          bundle: christianbundle,
+        },
+        {
+          label: 'Coffee',
+          bundle: coffeesbundle,
+        },
+        {
+          label: 'Crafting',
+          bundle: craftingbundle,
+        },
+        {
+          label: 'Gardening',
+          bundle: gardeningbundle,
+        },
+      ]
     </script>
   </head>
 

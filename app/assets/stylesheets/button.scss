@@ -158,7 +158,21 @@ button svg{
 }
 
 .btn-item:hover {
-  background-color: $blue;
+  background-color: $red;
+  border-color: transparent;
+}
+
+.bundlebutton {
+  background-color: rgba(0,0,0,0.6);
+  transition: all 0.2s;
+  color: white;
+  margin: 4px;
+  min-width: auto;
+  white-space: nowrap;
+}
+
+.bundlebutton:hover {
+  background-color: $red;
   border-color: transparent;
 }
 
