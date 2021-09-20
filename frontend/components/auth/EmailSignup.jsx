@@ -22,7 +22,7 @@ const EmailSignup = ({
     <small>
       Use 6 or more characters
     </small>
-    <button type="submit" className="btn-blue">
+    <button type="submit" className="btn-red">
       Get started, it&apos;s free!
     </button>
     <small>

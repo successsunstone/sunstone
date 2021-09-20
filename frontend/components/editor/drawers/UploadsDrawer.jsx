@@ -94,7 +94,7 @@ class UploadsDrawer extends React.Component {
             Upload an Image
             <input id="upload-button" className={styles.hidden} type="file" accept="image/*" onChange={this.handleFile} />
           </label>
-          {/* <button type="button" className="btn-blue">Upload an Image</button> */}
+          {/* <button type="button" className="btn-red">Upload an Image</button> */}
         </div>
         <div className={scrollbar.customScroll}>
           <div className={styles.uploadsDrawer}>

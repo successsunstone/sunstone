@@ -69,7 +69,7 @@ class LoginForm extends React.Component {
         {errors.length ? <div className="error">{errors.join('. ')}</div> : ''}
         <input type="text" name="email" placeholder="Email" onChange={this.handleChange('email')} />
         <input type="password" name="password" placeholder="Password" onChange={this.handleChange('password')} />
-        <button type="submit" className="btn-blue">
+        <button type="submit" className="btn-red">
           Log in
         </button>
         <small>

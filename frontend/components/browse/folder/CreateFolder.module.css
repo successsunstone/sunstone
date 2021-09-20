@@ -43,7 +43,7 @@
 }
 
 .custom input:focus {
-  border: 1px solid #dc85ff;
+  border: 1px solid #ff0000;
 }
 
 .errorInput {

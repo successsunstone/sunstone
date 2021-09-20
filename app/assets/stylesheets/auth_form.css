@@ -9,7 +9,7 @@
   margin-top: 30px;
 }
 
-.auth-form > * {
+.auth-form>* {
   margin-top: 16px;
 }
 
@@ -26,7 +26,7 @@
 }
 
 .auth-form a {
-  color: #dc85ff;
+  color: #ff0000;
   text-decoration: underline;
 }
 
@@ -60,7 +60,7 @@
 }
 
 .auth-form input:focus {
-  border: 1px solid #dc85ff;
+  border: 1px solid #ff0000;
 }
 
 .return-login {
@@ -69,7 +69,7 @@
   font-size: 2rem;
 }
 
-.return-login svg{
+.return-login svg {
   margin-right: 10px;
 }
 

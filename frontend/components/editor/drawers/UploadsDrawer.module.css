@@ -1,5 +1,5 @@
 .header {
-    display: flex;
+  display: flex;
   flex-direction: column;
   margin: 24px 32px 8px 16px;
 }
@@ -28,11 +28,11 @@
   position: relative;
 }
 
-.masonItem > i {
+.masonItem>i {
   display: block;
 }
 
-.masonItem > img {
+.masonItem>img {
   position: absolute;
   top: 0;
   width: 100%;
@@ -44,7 +44,7 @@
 }
 
 .uploadBtn {
-  background-color: #dc85ff;
+  background-color: #ff0000;
   border-color: transparent;
   color: #ffffff;
   cursor: pointer;
@@ -100,6 +100,10 @@
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

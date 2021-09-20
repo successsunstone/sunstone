@@ -50,12 +50,12 @@ const ImageShow = ({ image, user, external }) => {
 
           </div>
           {external ? (
-            <button type="button" className="btn-blue" onClick={() => download(image.download)}>
+            <button type="button" className="btn-red" onClick={() => download(image.download)}>
               Download
             </button>
           ) : (
             <a href={image.url} download className={styles.stretch}>
-              <button type="button" className="btn-blue">
+              <button type="button" className="btn-red">
                 Download
               </button>
             </a>

@@ -59,13 +59,13 @@ class CreateFolder extends React.Component {
             </li>
             {formType === 'Edit Folder' ? (
               <li className={styles.submit}>
-                <button type="button" className="btn-blue" onClick={this.deleteFolder}>
+                <button type="button" className="btn-red" onClick={this.deleteFolder}>
                   Delete Folder
                 </button>
               </li>
             ) : ''}
             <li className={styles.submit}>
-              <button type="submit" className="btn-blue" onClick={this.handleSubmit}>
+              <button type="submit" className="btn-red" onClick={this.handleSubmit}>
                 {formType}
               </button>
             </li>

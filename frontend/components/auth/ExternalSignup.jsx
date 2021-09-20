@@ -15,7 +15,7 @@ const ExternalSignup = ({ changeView, demoLogin, animate }) => (
       </i>
       <span>Log in as Demo User</span>
     </button>
-    {/* <button type="button" className="btn-blue" onClick={changeView}>
+    {/* <button type="button" className="btn-red" onClick={changeView}>
       Sign up with E-mail
     </button>
     <small>

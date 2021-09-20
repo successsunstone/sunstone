@@ -113,7 +113,7 @@ class CreateDropDown extends React.Component {
               </li>
               {(width !== '' || height !== '') && error ? <li className={styles.error}>Dimensions must be at least 40px and no more than 8000px.</li> : ''}
               <li className={styles.submit}>
-                <button type="submit" className="btn-blue" onClick={this.submitCustom} disabled={error}>
+                <button type="submit" className="btn-red" onClick={this.submitCustom} disabled={error}>
                   Create Design
                 </button>
               </li>
