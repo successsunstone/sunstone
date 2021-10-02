@@ -19,6 +19,7 @@ class Design extends React.Component {
     this.myRef = React.createRef();
     this.holdShift = this.holdShift.bind(this);
     this.releaseShift = this.releaseShift.bind(this);
+    this.onTextChange = this.onTextChange.bind(this);
   }
 
   componentDidMount() {
@@ -44,14 +45,29 @@ class Design extends React.Component {
     document.removeEventListener('keyup', this.releaseShift);
   }
 
+  onTextChange(value) {
+    const { receiveElement } = this.props;
+    if(this.element)
+    receiveElement({
+      ...this.element,
+      elementableAttributes: { ...this.element.elementableAttributes, text: value },
+    });
+  }
+
   holdShift(e) {
     if (e.shiftKey) {
       this.keepRatio = true;
     }
   }
 
-  releaseShift() {
+  releaseShift(event) {
+    const { selection, editable } = this.props;
     this.keepRatio = false;
+    if (selection && !editable) {
+      if ((event.keyCode === 46 || event.keyCode === 8)) {
+        this.deleteElement();
+      }
+    }
   }
 
   // onControlledDragStop(e, element, position) {
@@ -73,17 +89,21 @@ class Design extends React.Component {
     receiveElement(this.element);
   }
 
+  deleteElement() {
+    const { receiveElement, setSelection } = this.props;
+    receiveElement({ ...this.element, _destroy: true });
+    setSelection(null);
+  }
+
   render() {
-    const {
-      elements, design, zoom,
-    } = this.props;
+    const { elements, design, zoom, selection, editable, setEditable } = this.props;
     const { target } = this.state;
     return (
       <div
         className={styles.design}
         style={{ width: design.width * zoom, height: design.height * zoom }}
       >
-        <Moveable
+        {!editable && <Moveable
           ref={this.myRef}
           target={target}
           draggable
@@ -155,8 +175,32 @@ class Design extends React.Component {
             target.style.top = `${this.frame.translate[1]}px`;
             target.style.transform = `rotate(${this.frame.rotate}deg)`;
           }}
-        />
+        />}
         <div className={styles.elementsContainer} id="noElement">
+          <svg width={design.width * zoom} height={design.height * zoom}>
+            <pattern
+              id="pattern-circles"
+              x={48 * zoom}
+              y={48 * zoom}
+              width={96 * zoom}
+              height={96 * zoom}
+              patternUnits="userSpaceOnUse"
+              patternContentUnits="userSpaceOnUse"
+            >
+              <circle id="pattern-circle" cx="2" cy="2" r="2" fill="black" />
+            </pattern>
+            <rect
+              width="100%"
+              height="100%"
+              fill="#f3c6a6"
+            />
+            <rect
+              id="pegboard"
+              width="100%"
+              height="100%"
+              fill="url(#pattern-circles)"
+            />
+          </svg>
           {elements.map((element, index) => {
             if (element._destroy) return null;
             return (
@@ -171,9 +215,17 @@ class Design extends React.Component {
                   transform: `rotate(${element.rotate}deg)`,
                   // transform: `translate(${element.posX * zoom}px, ${element.posY * zoom}px)`,
                 }}
-                onClick={() => this.select(index)}
+                onClick={() => {
+                  this.select(index);
+                }}
               >
-                <Element element={element} zoom={zoom} />
+                <Element
+                  element={element}
+                  zoom={zoom}
+                  setEditable={() => { if (selection === element.id) return setEditable(element.id); return this.select(index); }}
+                  editable={editable === element.id}
+                  onChange={this.onTextChange}
+                />
               </div>
             );
           })}

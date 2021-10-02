@@ -10,16 +10,16 @@ const components = {
   Image,
 };
 
-const Element = ({ element, zoom }) => {
+const Element = ({ element, zoom, editable, setEditable, onChange }) => {
   const { transparency } = element;
   return (
     <div
       className={`${styles.element} no-cursor`}
-      style={{ opacity: transparency, height: element.elementableAttributes.height * zoom, width: element.elementableAttributes.width * zoom }}
+      style={{ opacity: transparency / 100, height: element.elementableAttributes.height * zoom, width: element.elementableAttributes.width * zoom }}
     >
       {React.createElement(
         components[element.elementableType],
-        { elementAttr: element.elementableAttributes, zoom },
+        { elementAttr: element.elementableAttributes, zoom, editable, setEditable, onChange },
         null,
       )}
     </div>

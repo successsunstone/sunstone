@@ -5,13 +5,13 @@ import scrollbar from './scrollbar.module.css';
 
 const mockupResponse = [ // need default width height and desc to search
   {
-    id: 1, text: 'Add a heading', fontWeight: 800, fontSize: 28, fontFamily: 'Open Sans',
+    id: 1, text: 'Add a heading', fontWeight: 800, fontSize: 48, fontFamily: 'Open Sans',
   },
   {
-    id: 2, text: 'Add a subheading', fontWeight: 400, fontSize: 18, fontFamily: 'Open Sans',
+    id: 2, text: 'Add a subheading', fontWeight: 400, fontSize: 36, fontFamily: 'Open Sans',
   },
   {
-    id: 3, text: 'Add a little bit of body text', fontWeight: 300, fontSize: 12, fontFamily: 'Open Sans',
+    id: 3, text: 'Add a little bit of body text', fontWeight: 300, fontSize: 24, fontFamily: 'Open Sans',
   },
 ];
 
@@ -34,15 +34,16 @@ class TextDrawer extends React.Component {
     text, fontWeight, fontSize, fontFamily,
   }) {
     const { addElement, zoom } = this.props;
+    const width = this.getTextWidth(text, `${fontWeight} ${fontSize}px ${fontFamily}`) + 30;
     const element = {
       elementableType: 'Text',
-      transparency: 1,
+      transparency: 100,
       zIndex: 0,
       posX: 0,
       posY: 0,
       // _destroy: true
       elementableAttributes: {
-        color: '#000000', text, fontFamily, fontWeight, fontSize, height: fontSize, width: this.getTextWidth(text, `${fontWeight} ${fontSize}px ${fontFamily}`) + 10,
+        color: '#000000', text, fontFamily, fontWeight, fontSize, height: width, width: width,
       },
     };
     addElement(element);

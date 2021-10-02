@@ -12,14 +12,15 @@ class Editor extends React.Component {
       elements: [], // key-value pair elementId and the current element, array index=z-index order
       zoom: 0.5,
       selection: null,
-      selected: {}, // kv pair or array index and element, with or without eleId
+      editable: null,
+      selected: null, // kv pair or array index and element, with or without eleId
       loading: false,
       // undoHistory: [], array of key-value pair of elementId and the element copy before
     };
     this.changeZoomFactor = this.changeZoomFactor.bind(this);
     this.updateDesign = this.updateDesign.bind(this);
-    this.setSelected = this.setSelected.bind(this);
     this.setSelection = this.setSelection.bind(this);
+    this.setEditable = this.setEditable.bind(this);
     this.updateElement = this.updateElement.bind(this);
     this.addElement = this.addElement.bind(this);
   }
@@ -34,15 +35,20 @@ class Editor extends React.Component {
   }
 
   setSelection(idx) {
-    this.setState({ selection: idx });
+    const { elements } = this.props;
+    this.setState({
+      selected: elements.find((el) => el.id === idx),
+      selection: idx,
+      editable: null,
+    });
   }
 
-  setSelected(id) {
-    const { elements } = this.props;
-    if (id === null) {
-      this.setState({ selected: {} });
+  setEditable(idx) {
+    const { selection } = this.state;
+    if (selection === idx) {
+      this.setState({ editable: idx });
     } else {
-      this.setState({ selected: { [id]: elements[id] } });
+      this.setSelection(idx);
     }
   }
 
@@ -107,9 +113,10 @@ class Editor extends React.Component {
 
   render() {
     const {
-      design, zoom, selected, loading, selection
+      design, zoom, selected, loading, selection, editable,
     } = this.state;
     const { elements } = this.props;
+
     // return <Viewer design={design} elements={elements} zoom={zoom} />
     return (
       <div className={styles.editorContainer}>
@@ -122,10 +129,11 @@ class Editor extends React.Component {
             zoom={zoom}
             updateElementPos={this.updateElementPos}
             selected={selected}
-            setSelected={this.setSelected}
             updateElement={this.updateElement}
             selection={selection}
+            editable={editable}
             setSelection={this.setSelection}
+            setEditable={this.setEditable}
           />
           <div className={styles.zoomBar}>
             <button type="button" className="btn-icon" onClick={() => this.changeZoomFactor(1)}>100%</button>
