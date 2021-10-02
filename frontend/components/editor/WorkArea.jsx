@@ -12,14 +12,6 @@ class WorkArea extends React.Component {
     this.handleClickOutside = this.handleClickOutside.bind(this);
   }
 
-  componentDidMount() {
-    document.addEventListener('mousedown', this.handleClickOutside);
-  }
-
-  componentWillUnmount() {
-    document.removeEventListener('mousedown', this.handleClickOutside);
-  }
-
   setWrapperRef(node) {
     this.wrapperRef = node;
   }
@@ -28,20 +20,36 @@ class WorkArea extends React.Component {
     const { setSelection } = this.props;
     if (this.wrapperRef
         && this.wrapperRef.contains(event.target)
-        && (event.target.id === 'noElement' || event.target.id === 'noElementGrey' || event.target.id === 'noElementShadow')) {
+        && (event.target.id === 'noElement' || event.target.id === 'noElementGrey' || event.target.id === 'noElementShadow' || event.target.id === 'pegboard')) {
       setSelection(null);
     }
   }
 
   render() {
     const {
-      design, elements, zoom, updateElementPos, selected, setSelected, updateElement, selection, setSelection,
+      design,
+      elements,
+      zoom,
+      updateElementPos,
+      selected,
+      updateElement,
+      selection,
+      setSelection,
+      editable,
+      setEditable,
     } = this.props;
     if (Object.keys(design).length === 0) return null;
     return (
-      <div className={styles.workContainer}>
-        <DesignToolsContainer selected={selected} updateElement={updateElement} setSelected={setSelected} selection={selection} setSelection={setSelection} />
-        <div className={styles.workArea} ref={this.setWrapperRef} id="noElementGrey">
+      <div className={styles.workContainer} onMouseDown={this.handleClickOutside}>
+        <DesignToolsContainer
+          selected={selected}
+          setSelection={setSelection}
+        />
+        <div
+          className={styles.workArea}
+          ref={this.setWrapperRef}
+          id="noElementGrey"
+        >
           <div className={styles.designContainer} id="noElementShadow">
             <DesignContainer
               // elements={elements}
@@ -50,6 +58,8 @@ class WorkArea extends React.Component {
               updateElement={updateElement}
               setSelection={setSelection}
               selection={selection}
+              setEditable={setEditable}
+              editable={editable}
             />
           </div>
         </div>

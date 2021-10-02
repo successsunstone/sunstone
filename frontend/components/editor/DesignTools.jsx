@@ -4,77 +4,41 @@ import styles from './DesignTools.module.css';
 class DesignTools extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { dropdown: null, selected: {}, selectedId: null };
     this.updateStuff = this.updateStuff.bind(this);
     this.deleteElement = this.deleteElement.bind(this);
-    // this.deleteKeyDown = this.deleteKeyDown.bind(this);
+    // if(props.update_header)props.headerUpdated();
   }
-
-  // componentDidMount() {
-  //   document.addEventListener('keydown', this.deleteKeyDown);
-  // }
-
-  componentDidUpdate(prevProps) {
-    const { element } = this.props;
-    if (!prevProps.element && element) {
-      this.setState({ selected: element });
-    } else if (prevProps.element && !element) {
-      this.setState({ selected: {} });
-    } else if (prevProps.element && element && prevProps.element.id !== element.id) {
-      this.setState({ selected: element });
-    }
-    // if (!prevProps.element && element && element.id !== prevProps.element.id) {
-    //   console.log('hello')
-    // }
-    // if (Object.keys(prevProps.selected)[0] !== Object.keys(selected)[0]) {
-    //   this.updateSelected();
-    // }
-  }
-
-  // componentWillUnmount() {
-  //   document.removeEventListener('keydown', this.deleteKeyDown);
-  // }
 
   changeValue(attr) {
+    const { selected, receiveElement } = this.props;
     if (attr === 'posX' || attr === 'posY' || attr === 'transparency' || attr === 'zIndex') {
       return (e) => {
-        const { selected } = this.state;
         selected[attr] = e.target.value;
-        this.setState({ selected });
+        receiveElement({ selected });
       };
     }
     return (e) => {
-      const { selected } = this.state;
       selected.elementableAttributes[attr] = e.target.value;
-      this.setState({ selected });
+      receiveElement({ selected });
     };
   }
 
-  // deleteKeyDown(event) {
-  //   const { selected } = this.state;
-  //   if (event.keyCode === 8 && Object.keys(selected).length !== 0) {
-  //     this.deleteElement();
-  //   }
-  // }
-
   deleteElement() {
-    const { selected } = this.state;
-    const { receiveElement, setSelection } = this.props;
+    const { selected, receiveElement, setSelection } = this.props;
     receiveElement({ ...selected, _destroy: true });
     setSelection(null);
   }
 
   updateStuff(e) {
     e.preventDefault();
-    const { selected } = this.state;
-    const { receiveElement } = this.props;
-    receiveElement({ elementableAttributes: { color: selected.elementableAttributes.color } });
+    const { selected, receiveElement } = this.props;
+    receiveElement({ ...selected, elementableAttributes: { ...selected.elementableAttributes, color: selected.elementableAttributes.color } });
   }
 
   render() {
-    const { selection } = this.props;
-    const { selected } = this.state;
-    if (Object.keys(selected).length === 0) {
+    const { selected } = this.props;
+
+    if (!selected) {
       return (
         <div className={styles.designTools}>
           <span className={styles.nothingSelected}>Nothing Selected</span>
@@ -94,28 +58,63 @@ class DesignTools extends React.Component {
                 <input type="color" className={styles.hidden} size={selected.elementableAttributes.color.length + 1} value={selected.elementableAttributes.color} onChange={this.changeValue('color')} />
               </label>
             )}
-            {/* {selected.elementableType === 'Shape' ? (
-              <>
-                <span>Width:</span>
-                <input type="text" className="input-attr" size={selected.elementableAttributes.width.toString().length + 1} value={selected.elementableAttributes.width} onChange={this.changeValue('width')} />
-                <span>Height:</span>
-                <input type="text" className="input-attr" size={selected.elementableAttributes.height.toString().length + 1} value={selected.elementableAttributes.height} onChange={this.changeValue('height')} />
-              </>
-            ) : ''} */}
             {selected.elementableType === 'Text' && (
               <>
-                <span>Text:</span>
-                <input type="text" className="input-attr" size={selected.elementableAttributes.text.length + 1} value={selected.elementableAttributes.text} onChange={this.changeValue('text')} />
+                {/* <span>Text:</span>
+                <input type="text" className="input-attr" size={selected.elementableAttributes.text.length + 1} value={selected.elementableAttributes.text} onChange={this.changeValue('text')} /> */}
                 <span>Size:</span>
-                <input type="text" className="input-attr" size={selected.elementableAttributes.fontSize.toString().length + 1} value={selected.elementableAttributes.fontSize} onChange={this.changeValue('fontSize')} />
+                <input
+                  type="number"
+                  className="input-attr"
+                  size={
+                    selected.elementableAttributes.fontSize.toString().length +
+                    1
+                  }
+                  value={selected.elementableAttributes.fontSize}
+                  onChange={this.changeValue("fontSize")}
+                />
                 <span>Font:</span>
-                <select className="input-attr" defaultValue={selected.elementableAttributes.fontFamily} onChange={this.changeValue('fontFamily')}>
-                  {['Open Sans', 'ArchitectsDaughter', 'LobsterTwo', 'AbrilFatface', 'AmaticSC', 'Italianno', 'Parisienne', 'FredokaOne', 'Nunito', 'Raleway', 'Roboto', 'Sarabun', 'Teko', 'Work Sans', 'NanumMyeongjo', 'Chakra Petch', 'Qahiri-Regular', 'Fuggles-Regular', 'ZenTokyoZoo-Regular'].map(font => (
+                <select
+                  className="input-attr"
+                  defaultValue={selected.elementableAttributes.fontFamily}
+                  onChange={this.changeValue("fontFamily")}
+                >
+                  {[
+                    "Open Sans",
+                    "ArchitectsDaughter",
+                    "LobsterTwo",
+                    "AbrilFatface",
+                    "AmaticSC",
+                    "Italianno",
+                    "Parisienne",
+                    "FredokaOne",
+                    "Nunito",
+                    "Raleway",
+                    "Roboto",
+                    "Sarabun",
+                    "Teko",
+                    "Work Sans",
+                    "NanumMyeongjo",
+                    "Chakra Petch",
+                    "Qahiri-Regular",
+                    "Fuggles-Regular",
+                    "ZenTokyoZoo-Regular",
+                  ].map((font) => (
                     <option key={font}>{font}</option>
                   ))}
                 </select>
                 <span>Weight:</span>
-                <input id="attr-weight" type="text" className="input-attr" size={selected.elementableAttributes.fontWeight.toString().length + 1} value={selected.elementableAttributes.fontWeight} onChange={this.changeValue('fontWeight')} />
+                <input
+                  id="attr-weight"
+                  type="number"
+                  className="input-attr"
+                  size={
+                    selected.elementableAttributes.fontWeight.toString()
+                      .length + 1
+                  }
+                  value={selected.elementableAttributes.fontWeight}
+                  onChange={this.changeValue("fontWeight")}
+                />
               </>
             )}
           </div>
@@ -125,10 +124,34 @@ class DesignTools extends React.Component {
             <span>Y:</span>
             <input type="text" className="input-attr" size={selected.posY.toString().length + 1} value={selected.posY} onChange={this.changeValue('posY')} /> */}
             <span>Opacity:</span>
-            <input type="text" className="input-attr" size={selected.transparency.toString().length + 1} value={selected.transparency} onChange={this.changeValue('transparency')} />
+            <input
+              type="number"
+              minimum="0"
+              max="100"
+              name="opacity"
+              className="input-attr"
+              size={selected.transparency.toString().length + 1}
+              value={selected.transparency}
+              onChange={this.changeValue("transparency")}
+            />
             <span>Order:</span>
-            <input type="text" className="input-attr" size={selected.zIndex.toString().length + 1} value={selected.zIndex} onChange={this.changeValue('zIndex')} />
-            <button type="button" className="btn-color" onClick={this.deleteElement}>Delete</button>
+            <input
+              type="number"
+              minimum="0"
+              max="100"
+              className="input-attr"
+              name="order"
+              size={selected.zIndex.toString().length + 1}
+              value={selected.zIndex}
+              onChange={this.changeValue("zIndex")}
+            />
+            <button
+              type="button"
+              className="btn-color"
+              onClick={this.deleteElement}
+            >
+              Delete
+            </button>
             {/* <button type="submit" className="btn-color">Submit</button> */}
           </div>
         </form>

@@ -10,7 +10,7 @@ export default function (props) {
     const { addElement } = props;
     const element = {
       elementableType: 'Shape',
-      transparency: 1,
+      transparency: 100,
       zIndex: 0,
       posX: 0,
       posY: 0,

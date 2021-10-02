@@ -73,7 +73,7 @@ class UploadsDrawer extends React.Component {
     const { addElement } = this.props;
     const element = {
       elementableType: 'Image',
-      transparency: 1,
+      transparency: 100,
       zIndex: 0,
       posX: 0,
       posY: 0,
