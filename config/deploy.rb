@@ -31,7 +31,7 @@ set :branch,        :master
 # set :keep_releases, 5
 
 ## Linked Files & Directories (Default None):
-set :linked_files, %w{config/database.yml config/master.key}
+set :linked_files, %w{config/database.yml config/master.key .env}
 set :linked_dirs,  %w{log .bundle tmp/pids node_modules tmp/cache tmp/sockets vendor/bundle public/system public/uploads}
 
 namespace :puma do
