@@ -12,7 +12,7 @@ const Text = ({
   const textRef = useRef(text);
 
   useEffect(() => {
-    if (!editable) {
+    if (!editable && onChange) {
       onChange(textRef.current);
     }
   }, [editable]);

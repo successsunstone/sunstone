@@ -9,7 +9,10 @@ const designsReducer = (state = {}, action) => {
     case RECEIVE_DESIGNS:
       return { ...state, ...action.designs };
     case RECEIVE_DESIGN:
-      return { ...state, ...{ [action.payload.design.id]: action.payload.design } };
+      if (action.payload.design)
+        return { ...state, ...{ [action.payload.design.id]: action.payload.design } };
+      else
+        console.log(action)
     case REMOVE_DESIGN:
       delete nextState[action.payload.design.id];
       return nextState;
@@ -22,6 +25,7 @@ const designsReducer = (state = {}, action) => {
     default:
       return state;
   }
+  return state;
 };
 
 export default designsReducer;

@@ -115,7 +115,7 @@ class UploadsDrawer extends React.Component {
                 </div>
               )}
               {images.map((image) => (
-                <div
+                image && <div
                   key={image.id}
                   className={styles.masonItem}
                   style={{

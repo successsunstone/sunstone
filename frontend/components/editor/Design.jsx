@@ -46,12 +46,17 @@ class Design extends React.Component {
   }
 
   onTextChange(value) {
-    const { receiveElement } = this.props;
-    if(this.element)
-    receiveElement({
-      ...this.element,
-      elementableAttributes: { ...this.element.elementableAttributes, text: value },
-    });
+    const { receiveElement, selection, editable } = this.props;
+    if (this.element
+      && this.element.elementableType === 'Text'
+      && this.element.id === selection
+      && this.element.id === editable
+    ) {
+      receiveElement({
+        ...this.element,
+        elementableAttributes: { ...this.element.elementableAttributes, text: value },
+      });
+    }
   }
 
   holdShift(e) {
@@ -63,8 +68,8 @@ class Design extends React.Component {
   releaseShift(event) {
     const { selection, editable } = this.props;
     this.keepRatio = false;
-    if (selection && !editable) {
-      if ((event.keyCode === 46 || event.keyCode === 8)) {
+    if (event.target === document.body && selection && !editable) {
+      if ((event.key === 'Delete' || event.key === 'Backspace')) {
         this.deleteElement();
       }
     }

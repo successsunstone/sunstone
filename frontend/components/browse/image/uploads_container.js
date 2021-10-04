@@ -4,7 +4,7 @@ import { fetchUserUploads, receiveUpload } from '../../../actions/uploaded_image
 import { toggleModal } from '../../../actions/modal_actions';
 
 const mapStateToProps = (state) => {
-  const { uploadedImages } = state.entities.users[state.session.id];
+  const { uploadedImages } = state.entities.users[state.session.id] || {};
   return {
     folder: { name: 'Uploads' },
     images: uploadedImages ? uploadedImages.map((id) => state.entities.uploadedImages[id]) : [],
