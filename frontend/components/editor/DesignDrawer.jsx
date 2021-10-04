@@ -6,12 +6,14 @@ import TextDrawer from './drawers/TextDrawer';
 import UploadsDrawerContainer from './drawers/uploads_drawer_container';
 import UnsplashDrawerContainer from './drawers/unsplash_drawer_container';
 import EmptyDrawer from './drawers/EmptyDrawer';
+import isMobile from '../../util/mobile_util';
+
 import styles from './DesignDrawer.module.css';
 
 class DesignDrawer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { drawer: 2, closed: false, animate: true };
+    this.state = { drawer: 2, closed: isMobile(), animate: true };
     this.changeDrawer = this.changeDrawer.bind(this);
     this.closeDrawer = this.closeDrawer.bind(this);
   }
@@ -21,7 +23,7 @@ class DesignDrawer extends React.Component {
     if (closed) {
       this.setState({ drawer: id, closed: false, animate: false });
     } else {
-      this.setState({ drawer: id, closed: false, animate: true });
+      this.setState({ drawer: id, closed: true, animate: true });
     }
   }
 
@@ -54,7 +56,7 @@ class DesignDrawer extends React.Component {
           {drawers[drawer]}
         </div>
         <div className={styles.handle}>
-          <button type="button" className={`${styles.container} btn-none`} onClick={this.closeDrawer}>
+          <button type="button" id="drawer-door" className={`${styles.container} btn-none`} onClick={this.closeDrawer}>
 
             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" viewBox="199 149 104 404" width="20" height="80">
               <defs><path d="M200 550C200.3 533.74 216.97 517.07 250 500C283.03 482.93 299.7 466.26 300 450L300 250C299.67 233.13 283 216.46 250 200C217 183.54 200.33 166.87 200 150L200 550Z" id="fEGO0r42v" /></defs>

@@ -3,6 +3,7 @@ import styles from './Editor.module.css';
 import EditorNav from './EditorNav';
 import DesignDrawer from './DesignDrawer';
 import WorkArea from './WorkArea';
+import isMobile from '../../util/mobile_util';
 
 class Editor extends React.Component {
   constructor(props) {
@@ -68,6 +69,11 @@ class Editor extends React.Component {
   // }
   addElement(element) {
     const { createElement, design } = this.props;
+    if (isMobile()) {
+      $('#drawer-door').click();
+      // close the drawer
+    }
+
     createElement(design.id, { ...element, id: `temp-${Date.now()}` });
   }
 

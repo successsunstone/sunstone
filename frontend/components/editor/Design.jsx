@@ -220,6 +220,9 @@ class Design extends React.Component {
                   transform: `rotate(${element.rotate}deg)`,
                   // transform: `translate(${element.posX * zoom}px, ${element.posY * zoom}px)`,
                 }}
+                onTouchStart={() => {
+                  this.select(index);
+                }}
                 onClick={() => {
                   this.select(index);
                 }}
@@ -227,7 +230,10 @@ class Design extends React.Component {
                 <Element
                   element={element}
                   zoom={zoom}
-                  setEditable={() => { if (selection === element.id) return setEditable(element.id); return this.select(index); }}
+                  setEditable={() => {
+                    if (selection === element.id) return setEditable(element.id);
+                    return this.select(index);
+                  }}
                   editable={editable === element.id}
                   onChange={this.onTextChange}
                 />

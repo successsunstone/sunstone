@@ -21,6 +21,10 @@ const Text = ({
     <div
       contentEditable={editable}
       suppressContentEditableWarning={editable}
+      onTouchStart={(e) => {
+        setEditable();
+        e.stopPropagation();
+      }}
       onClick={(e) => {
         setEditable();
         e.stopPropagation();
