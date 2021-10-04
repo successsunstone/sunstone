@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { toggleModal } from '../actions/modal_actions';
-import App from './app';
+import App from './App';
 
 const mapStateToProps = (state) => ({
   mode: state.ui.mode,
