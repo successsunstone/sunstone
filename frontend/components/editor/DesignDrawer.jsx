@@ -19,11 +19,11 @@ class DesignDrawer extends React.Component {
   }
 
   changeDrawer(id) {
-    const { closed } = this.state;
+    const { closed, drawer } = this.state;
     if (closed) {
       this.setState({ drawer: id, closed: false, animate: false });
     } else {
-      this.setState({ drawer: id, closed: true, animate: true });
+      this.setState({ drawer: id, closed: id === drawer, animate: true });
     }
   }
 

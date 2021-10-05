@@ -51,20 +51,19 @@ class DesignTools extends React.Component {
       display: isMobile() ? 'block' : 'flex',
     };
 
-    const mobileAwareFormStyle = {
-      display: isMobile() ? 'block' : 'flex',
-      height: isMobile() ? '250px' : 'unset',
-    };
-
     const flexStyle = {
-      display: 'flex'
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      height: '28px',
+      margin: '0 5px',
     }
 
     return (
       <div className={styles.designTools}>
         <form
           className={styles.designForm}
-          style={mobileAwareFormStyle}
+          style={mobileAwareStyle}
           onChange={this.updateStuff}
           // onSubmit={(e) => e.preventDefault()}
         >

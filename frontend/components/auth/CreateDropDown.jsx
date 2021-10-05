@@ -79,25 +79,30 @@ class CreateDropDown extends React.Component {
           {custom ? (
             <div className={styles.customForm}>
               <li className={styles.custom}>
-                <input
-                  type="number"
-                  style={width !== '' && (width < 40 || width > 8000) ? { border: '1px solid red' } : {}}
-                  inputMode="numeric"
-                  pattern="\d*"
-                  name="width"
-                  placeholder="Width"
-                  onChange={this.handleChange('width')}
-                />
-                <input
-                  type="number"
-                  style={height !== '' && (height < 40 || height > 8000) ? { border: '1px solid red' } : {}}
-                  inputMode="numeric"
-                  pattern="\d*"
-                  name="height"
-                  placeholder="Height"
-                  onChange={this.handleChange('height')}
-                />
-                <div>px</div>
+                <div>
+                  <input
+                    type="number"
+                    style={width !== '' && (width < 40 || width > 8000) ? { border: '1px solid red' } : {}}
+                    inputMode="numeric"
+                    pattern="\d*"
+                    name="width"
+                    placeholder="Width"
+                    onChange={this.handleChange('width')}
+                  />
+                  px
+                </div>
+                <div>
+                  <input
+                    type="number"
+                    style={height !== '' && (height < 40 || height > 8000) ? { border: '1px solid red' } : {}}
+                    inputMode="numeric"
+                    pattern="\d*"
+                    name="height"
+                    placeholder="Height"
+                    onChange={this.handleChange('height')}
+                  />
+                  px
+                </div>
               </li>
               {(width !== '' || height !== '') && error ? <li className={styles.error}>Dimensions must be at least 40px and no more than 8000px.</li> : ''}
               <li className={styles.submit}>

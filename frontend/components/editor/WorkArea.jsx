@@ -1,5 +1,4 @@
 import React from 'react';
-import Design from './Design';
 import DesignContainer from './design_container';
 import styles from './WorkArea.module.css';
 import DesignToolsContainer from './design_tools_container';
@@ -10,6 +9,9 @@ class WorkArea extends React.Component {
     super(props);
     this.setWrapperRef = this.setWrapperRef.bind(this);
     this.handleClickOutside = this.handleClickOutside.bind(this);
+    this.state = {
+      touchHasStarted: false
+    }
   }
 
   setWrapperRef(node) {
@@ -18,7 +20,9 @@ class WorkArea extends React.Component {
 
   handleClickOutside(event) {
     const { setSelection } = this.props;
-    if (this.wrapperRef
+    const { touchHasStarted } = this.state;
+    if (!touchHasStarted
+        && this.wrapperRef
         && this.wrapperRef.contains(event.target)
         && (event.target.id === 'noElement' || event.target.id === 'noElementGrey' || event.target.id === 'noElementShadow' || event.target.id === 'pegboard')) {
       setSelection(null);
@@ -59,6 +63,9 @@ class WorkArea extends React.Component {
               setSelection={setSelection}
               selection={selection}
               setEditable={setEditable}
+              touchHasStarted={this.state.touchHasStarted}
+              touchStarted={() => { this.setState({ touchHasStarted: true }) }}
+              touchEnded={() => { this.setState({ touchHasStarted: false }) }}
               editable={editable}
             />
           </div>

@@ -8,6 +8,7 @@ const Text = ({
   setEditable,
   onChange,
   zoom,
+  touchHasStarted, touchStarted, touchEnded,
 }) => {
   const textRef = useRef(text);
 
@@ -21,10 +22,16 @@ const Text = ({
     <div
       contentEditable={editable}
       suppressContentEditableWarning={editable}
-      onTouchStart={(e) => {
-        setEditable();
-        e.stopPropagation();
+      onTouchEnd={(e) => {
+        // if (!touchHasStarted) {
+          // touchStarted();
+          setEditable();
+          e.stopPropagation();
+        // }
       }}
+      // onTouchEnd={() => {
+      //   touchEnded();
+      // }}
       onClick={(e) => {
         setEditable();
         e.stopPropagation();

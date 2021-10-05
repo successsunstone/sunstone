@@ -10,7 +10,7 @@ const components = {
   Image,
 };
 
-const Element = ({ element, zoom, editable, setEditable, onChange }) => {
+const Element = ({ element, zoom, ...props }) => {
   const { transparency } = element;
   return (
     <div
@@ -19,7 +19,7 @@ const Element = ({ element, zoom, editable, setEditable, onChange }) => {
     >
       {React.createElement(
         components[element.elementableType],
-        { elementAttr: element.elementableAttributes, zoom, editable, setEditable, onChange },
+        { elementAttr: element.elementableAttributes, zoom, ...props },
         null,
       )}
     </div>

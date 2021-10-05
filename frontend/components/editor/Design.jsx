@@ -101,7 +101,12 @@ class Design extends React.Component {
   }
 
   render() {
-    const { elements, design, zoom, selection, editable, setEditable } = this.props;
+    const {
+      elements, design, zoom,
+      selection, editable, setEditable,
+      touchHasStarted, touchStarted, touchEnded,
+    } = this.props;
+    console.log({touchHasStarted})
     const { target } = this.state;
     return (
       <div
@@ -220,10 +225,20 @@ class Design extends React.Component {
                   transform: `rotate(${element.rotate}deg)`,
                   // transform: `translate(${element.posX * zoom}px, ${element.posY * zoom}px)`,
                 }}
-                onTouchStart={() => {
-                  this.select(index);
+                onTouchEnd={() => {
+                  console.log('touch started')
+                  const { touchHasStarted, touchStarted } = this.props;
+                  // if (!touchHasStarted) {
+                    // touchStarted();
+                    this.select(index);
+                  // }
                 }}
+                // onTouchEnd={() => {
+                //   console.log('touch ended')
+                //   this.props.touchEnded();
+                // }}
                 onClick={() => {
+                  console.log('click')
                   this.select(index);
                 }}
               >
@@ -235,6 +250,9 @@ class Design extends React.Component {
                     return this.select(index);
                   }}
                   editable={editable === element.id}
+                  touchHasStarted={touchHasStarted}
+                  touchStarted={touchStarted}
+                  touchEnded={touchEnded}
                   onChange={this.onTextChange}
                 />
               </div>
